@@ -531,7 +531,7 @@ int main( int argc, char** argv )
         gettimeofday(&tv_end, NULL);
 
 
-        fullSystem->printResult("result.txt");
+        fullSystem->printResult("pose_out.csv");
 
 
         int numFramesProcessed = abs(idsToPlay[0]-idsToPlay.back());

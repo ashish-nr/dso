@@ -1,6 +1,6 @@
 /**
 * This file is part of DSO.
-* 
+*
 * Copyright 2016 Technical University of Munich and Intel.
 * Developed by Jakob Engel <engelj at in dot tum dot de>,
 * for more information see <http://vision.in.tum.de/dso>.
@@ -295,6 +295,7 @@ private:
 	{
 		std::ifstream tr;
 		std::string timesFile = path.substr(0,path.find_last_of('/')) + "/times.txt";
+        //std::string timesFile = "/home/a/Programming/datasets/V1_02_medium/mav0/cam0/timestamps.txt";
 		tr.open(timesFile.c_str());
 		while(!tr.eof() && tr.good())
 		{
@@ -376,4 +377,3 @@ private:
 	char* databuffer;
 #endif
 };
-
