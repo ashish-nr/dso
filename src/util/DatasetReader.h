@@ -294,14 +294,17 @@ private:
 	inline void loadTimestamps()
 	{
 		std::ifstream tr;
-		std::string timesFile = path.substr(0,path.find_last_of('/')) + "/times.txt";
-        //std::string timesFile = "/home/a/Programming/datasets/V1_02_medium/mav0/cam0/timestamps.txt";
-		tr.open(timesFile.c_str());
-		while(!tr.eof() && tr.good())
+		//std::string timesFile = path.substr(0,path.find_last_of('/')) + "/times.txt";
+        std::string timesFile = "/home/a/Programming/datasets/V1_02_medium/mav0/cam0/timestamps.txt";
+		//tr.open(timesFile.c_str());
+        tr.open(timesFile);
+        std::string::size_type sz;
+        char buf[1000];
+
+		while(!tr.eof() && tr.getline(buf, 1000) && tr.good())
 		{
 			std::string line;
-			char buf[1000];
-			tr.getline(buf, 1000);
+            line = buf;
 
 			int id;
 			double stamp;
@@ -318,6 +321,11 @@ private:
 				timestamps.push_back(stamp);
 				exposures.push_back(exposure);
 			}
+
+            else
+            {
+                timestamps.push_back(std::stod(line, &sz));
+            }
 		}
 		tr.close();
 

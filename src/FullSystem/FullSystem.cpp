@@ -257,8 +257,8 @@ void FullSystem::printResult(std::string file)
 
 		if(setting_onlyLogKFPoses && s->marginalizedAt == s->id) continue;
 
-		myfile << s->timestamp <<
-			"," << s->camToWorld.translation()(0,0)<< "," << s->camToWorld.translation()(1,0)<< "," << s->camToWorld.translation()(2,0)<<
+		myfile << std::setprecision(19) << s->timestamp <<
+			"," << s->camToWorld.translation()(0,0) * 3.7 << "," << s->camToWorld.translation()(1,0) * 3.7 << "," << s->camToWorld.translation()(2,0) * 3.7 <<
 			"," << s->camToWorld.so3().unit_quaternion().x()<<
 			"," << s->camToWorld.so3().unit_quaternion().y()<<
 			"," << s->camToWorld.so3().unit_quaternion().z()<<
